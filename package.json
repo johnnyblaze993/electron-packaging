@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf build",
     "start": "concurrently \"vite\" \"wait-on http://localhost:3000 && electron .\"",
-    "build": "npm run clean && vite build && npx tsc",
+    "build": "npm run clean && vite build && tsc",
     "electron:build": "npm run build && electron-builder",
     "dev": "vite"
   },

@@ -16,7 +16,7 @@ function createWindow() {
     mainWindow.webContents.openDevTools();
   } else {
     // Using file:// protocol to load local files in production
-    mainWindow.loadURL(`file://${path.join(__dirname, '../dist/index.html')}`);
+    mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
   }
 }
 

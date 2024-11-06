@@ -1,3 +1,5 @@
+(window as any).CESIUM_BASE_URL = './cesium';
+
 import React, { useRef, useEffect } from 'react';
 import { Viewer } from 'resium';
 import { Ion, Cartesian3 } from 'cesium';
@@ -30,19 +32,10 @@ function App() {
   }, []);
 
   return (
-    <>
-      <h1>Vite + React + Cesium</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      
-      {/* Cesium Globe Viewer */}
-      <div style={{ width: '100vw', height: '100vh' }}>
+
+      <div >
         <Viewer ref={viewerRef} full />
       </div>
-    </>
   );
 }
 
