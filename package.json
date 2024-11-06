@@ -1,0 +1,40 @@
+{
+  "name": "electron-packaging",
+  "private": true,
+  "version": "0.0.0",
+  "main": "build/main.js",
+  "scripts": {
+    "clean": "rimraf build",
+    "start": "concurrently \"vite\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "npm run clean && vite build && npx tsc",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "concurrently": "^9.0.1",
+    "electron": "^33.0.2",
+    "electron-builder": "^25.1.8",
+    "rimraf": "^6.0.1",
+    "typescript": "~5.6.2",
+    "vite": "^5.4.10",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.example.app",
+    "asar": false,
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}
