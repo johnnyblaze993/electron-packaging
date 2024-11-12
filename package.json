@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "main": "build/main.js",
   "scripts": {
-    "clean": "rimraf build",
-    "start": "concurrently \"vite\" \"wait-on http://localhost:3000 && electron .\"",
+    "clean": "rimraf build dist",
+    "start": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "build": "npm run clean && vite build && tsc",
     "electron:build": "npm run build && electron-builder",
     "dev": "vite"

@@ -25,7 +25,7 @@ function createMainWindow() {
   });
 
   if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL('http://localhost:3000');
+    mainWindow.loadURL('http://localhost:5173');
     mainWindow.webContents.openDevTools();
   } else {
     mainWindow.loadFile(getHtmlFilePath('index.html'));
@@ -50,7 +50,7 @@ function createTestWindow() {
   });
 
   if (process.env.NODE_ENV === 'development') {
-    testWindow.loadURL('http://localhost:3000/test');
+    testWindow.loadURL('http://localhost:5173/test');
   } else {
     testWindow.loadFile(getHtmlFilePath('test.html'));
   }
@@ -67,7 +67,7 @@ ipcMain.on('open-test-window', () => {
   if (!testWindow) createTestWindow();
 });
 
-// app.whenReady().then(createMainWindow);
+app.whenReady().then(createMainWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
