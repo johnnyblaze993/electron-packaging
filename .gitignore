@@ -26,4 +26,4 @@ build/main.js
 build/preload.js
 
 /dist-electron
-/build
+/build/
