@@ -1,6 +1,7 @@
 // electron/preload.ts
-import { contextBridge } from 'electron';
+import { contextBridge, ipcRenderer } from 'electron';
 
-contextBridge.exposeInMainWorld('electron', {
-  // Expose any APIs you need here
+contextBridge.exposeInMainWorld('electronAPI', {
+  // Method to open the test window
+  openTestWindow: () => ipcRenderer.send('open-test-window')
 });
