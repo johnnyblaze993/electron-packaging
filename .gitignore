@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 build/main.js
 build/preload.js
+
+/dist-electron
