@@ -10,7 +10,7 @@ export default defineConfig({
     cesium(), // Adds Cesium plugin to handle Cesium assets
   ],
   define: {
-    CESIUM_BASE_URL: JSON.stringify('./cesium'), // Sets base URL for Cesium assets
+    CESIUM_BASE_URL: JSON.stringify('http://localhost:5173/cesium'),
   },
   build: {
     rollupOptions: {
