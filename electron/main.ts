@@ -21,8 +21,16 @@ function createMainWindow() {
   });
 
   // Directly load the Vite development server URL
-  mainWindow.loadURL('http://localhost:5173');
-  mainWindow.webContents.openDevTools(); // Opens DevTools for debugging
+  if (app.isPackaged) {
+    // Production: Load `index.html` and navigate to `#/`
+    mainWindow.loadFile(path.join(app.getAppPath(), 'dist', 'index.html')).then(() => {
+      mainWindow?.webContents.executeJavaScript(`window.location.hash = "/";`);
+    });
+  } else {
+    // Development: Load the Vite dev server URL with `#/`
+    mainWindow.loadURL('http://localhost:5173/#/');
+    mainWindow.webContents.openDevTools(); // Opens DevTools for debugging
+  }
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -50,8 +58,15 @@ function createTestWindow() {
     },
   });
 
-  // Directly load the Vite test route
-  testWindow.loadURL('http://localhost:5173/test');
+  if (app.isPackaged) {
+    // Production: Load `index.html` and navigate to `#/test`
+    testWindow.loadFile(path.join(app.getAppPath(), 'dist', 'index.html')).then(() => {
+      testWindow?.webContents.executeJavaScript(`window.location.hash = "/test";`);
+    });
+  } else {
+    // Development: Load the Vite dev server URL directly
+    testWindow.loadURL('http://localhost:5173/#/test');
+  }
   testWindow.setMenuBarVisibility(false);
 
   testWindow.on('closed', () => {
